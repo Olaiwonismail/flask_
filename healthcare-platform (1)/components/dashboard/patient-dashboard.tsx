@@ -44,13 +44,15 @@ export function PatientDashboard() {
   const fetchPatientData = async () => {
     try {
       const token = localStorage.getItem("access_token")
+      const id = localStorage.getItem("user_id") // Default to 1 if no ID found
+      
       const response = await fetch("http://localhost:5000/get_patients_data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ id: 1 }), // Replace with actual patient ID
+        body: JSON.stringify({ id: id }), // Replace with actual patient ID
       })
 
       if (response.ok) {
@@ -65,13 +67,14 @@ export function PatientDashboard() {
   const fetchAppointments = async () => {
     try {
       const token = localStorage.getItem("access_token")
+      const id = localStorage.getItem("user_id")
       const response = await fetch("http://localhost:5000/get_patients_appointment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ id: 1 }), // Replace with actual patient ID
+        body: JSON.stringify({ id: id }), // Replace with actual patient ID
       })
 
       if (response.ok) {

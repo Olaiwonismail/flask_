@@ -119,6 +119,7 @@ def login():
             "refresh_token": refresh_token,
             "token_type": "Bearer",
             'role': user.role,
+            'id':user.id,
         })
 
     return jsonify({"error": "Invalid credentials"}), 401

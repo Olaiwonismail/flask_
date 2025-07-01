@@ -40,7 +40,7 @@ export function LoginForm() {
         localStorage.setItem("access_token", data.access_token)
         localStorage.setItem("refresh_token", data.refresh_token)
         localStorage.setItem("user_role", data.role)
-
+        localStorage.setItem("user_id", data.id)
         // Redirect based on role
         if (data.role === "doctor") {
           router.push("/doctor/dashboard")

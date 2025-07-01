@@ -34,7 +34,7 @@ export function DoctorDashboard() {
   const [doctorData, setDoctorData] = useState<DoctorData | null>(null)
   const [appointments, setAppointments] = useState<Appointment[]>([])
   const [loading, setLoading] = useState(true)
-
+  
   useEffect(() => {
     fetchDoctorData()
     fetchAppointments()
@@ -43,13 +43,14 @@ export function DoctorDashboard() {
   const fetchDoctorData = async () => {
     try {
       const token = localStorage.getItem("access_token")
+      const id = localStorage.getItem("user_id") // Default to 1 if no ID found
       const response = await fetch("http://localhost:5000/get_doctors_data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ id: 1 }),
+        body: JSON.stringify({ id: id ? parseInt(id) : 1 }), // Use the stored ID or default to 1
       })
 
       if (response.ok) {
@@ -64,13 +65,14 @@ export function DoctorDashboard() {
   const fetchAppointments = async () => {
     try {
       const token = localStorage.getItem("access_token")
+      const id = localStorage.getItem("user_id") // Default to 1 if no ID found
       const response = await fetch("http://localhost:5000/get_doctors_appointment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ id: 1 }),
+        body: JSON.stringify({ id: id ? parseInt(id) : 1 }), // Use the stored ID or default to 1
       })
 
       if (response.ok) {

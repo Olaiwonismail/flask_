@@ -7,8 +7,9 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start",
-    "proxy": "http://localhost:5000"
+    "start": "next start"
+
+    
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

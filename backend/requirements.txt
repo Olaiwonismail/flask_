@@ -46,3 +46,4 @@ gunicorn==23.0.0
 
 # Additional Utilities
 dnspython==2.7.0
+flask_login
